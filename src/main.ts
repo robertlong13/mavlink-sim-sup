@@ -4,6 +4,8 @@ const WS_URL = 'ws://127.0.0.1:56781/'; // hard-coded for now
 
 let ws: WebSocket | null = null;
 
+const mavLinkProcessor = new window.MAVLink20Processor();
+
 function connect() {
   if (ws) return;
   log('connecting', WS_URL);
@@ -16,11 +18,9 @@ function connect() {
   };
 
   ws.onmessage = (ev: MessageEvent) => {
-    const data = ev.data;
-    log(
-      'websocket message',
-      data instanceof ArrayBuffer ? `<ArrayBuffer ${data.byteLength} bytes>` : data
-    );
+    const msgBuf = new Uint8Array(ev.data);
+    const result = mavLinkProcessor.decode(msgBuf);
+    log('decoded message', result);
   };
 
   ws.onerror = e => {
