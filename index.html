@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAVLink Simulation Supervisor</title>
+    <!-- Load generated mavlink.js as a global if present -->
+    <script src="/mavlink/mavlink.js"></script>
+  </head>
+
+  <body>
+    <pre
+      id="log"
+      style="
+        font: 12px/1.4 monospace;
+        padding: 8px;
+        margin: 0;
+        background: #0b0e14;
+        color: #d2d7df;
+        height: 100vh;
+        overflow: auto;
+        white-space: pre-wrap;
+      "
+    ></pre>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
