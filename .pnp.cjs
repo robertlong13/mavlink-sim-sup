@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["prettier", "npm:3.6.2"],\
           ["test-thing", "workspace:."],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vite", "virtual:ee933bef0110b6a7eba103c9cfb17cc34d0334329883cad45b46a95b05d150304c067544ea2b7121a0f20dd0b2a471317e29d7895b656d8578f3d79897a5fff0#npm:7.1.12"]\
@@ -1209,6 +1210,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prettier", [\
+      ["npm:3.6.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.6.2-2668152203/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["proc-log", [\
       ["npm:5.0.0", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/proc-log-npm-5.0.0-405173f9b4-10c0.zip/node_modules/proc-log/",\
@@ -1426,6 +1436,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["prettier", "npm:3.6.2"],\
           ["test-thing", "workspace:."],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vite", "virtual:ee933bef0110b6a7eba103c9cfb17cc34d0334329883cad45b46a95b05d150304c067544ea2b7121a0f20dd0b2a471317e29d7895b656d8578f3d79897a5fff0#npm:7.1.12"]\
