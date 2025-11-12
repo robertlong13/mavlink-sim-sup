@@ -1,10 +1,13 @@
 import { log, hr } from './logger.ts';
+import { RawStore } from './state/raw.ts';
+import type { DecodedMavlink } from './state/raw.ts';
 
 const WS_URL = 'ws://127.0.0.1:56781/'; // hard-coded for now
 
 let ws: WebSocket | null = null;
 
 const mavLinkProcessor = new window.MAVLink20Processor();
+const rawStore = new RawStore();
 
 function connect() {
   if (ws) return;
@@ -20,7 +23,21 @@ function connect() {
   ws.onmessage = (ev: MessageEvent) => {
     const msgBuf = new Uint8Array(ev.data);
     const result = mavLinkProcessor.decode(msgBuf);
-    log('decoded message', result);
+
+    const payload: Record<string, any> = {};
+    for (const key of result.fieldnames) {
+      payload[key] = result[key];
+    }
+
+    const decodedMsg: DecodedMavlink = {
+      t: Date.now(),
+      sysid: result._header.srcSystem,
+      compid: result._header.srcComponent,
+      msgId: result._id,
+      payload: payload,
+    };
+
+    rawStore.apply(decodedMsg);
   };
 
   ws.onerror = e => {
